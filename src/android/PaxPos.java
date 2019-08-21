@@ -57,7 +57,7 @@ public class PaxPos extends CordovaPlugin {
 			JSONObject json = new JSONObject(parms);
 
 			int appid = json.getInt("app_id");
-			String txt = json.getInt("txt");
+			String txt = json.getString("txt");
 
 			// InputStream is =
 			// context.getResources().openRawResource(getAppResource("logo", "raw"));

@@ -54,15 +54,15 @@ public class PaxPos extends CordovaPlugin {
 		if (action.equals("print_test")) {
 
 			String parms = args.getString(0);
-			// JSONObject json = new JSONObject(parms);
+			JSONObject json = new JSONObject(parms);
 
-			// int appid = json.getInt("app_id");
-			// String txt = json.getString("txt");
+			int appid = json.getInt("app_id");
+			String txt = json.getString("txt");
 
 			// InputStream is =
 			// context.getResources().openRawResource(getAppResource("logo", "raw"));
 
-			// callbackContext.success(appid + "," + txt);
+			callbackContext.success(appid + "," + txt);
 			callbackContext.success(parms);
 			return true;
 		} else if (action.equals("print_json")) {

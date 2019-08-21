@@ -12,8 +12,8 @@ var printer = {
     }
     return false;
   },
-  printTest: function (txt, onSuccess, onError) {
-    exec(onSuccess, onError, "PaxPos", "print_test", [txt]);
+  printTest: function (json, onSuccess, onError) {
+    exec(onSuccess, onError, "PaxPos", "print_test", [json]);
   },
   printText: function (txt, onSuccess, onError) {
     exec(onSuccess, onError, "PaxPos", "print_text", [txt]);

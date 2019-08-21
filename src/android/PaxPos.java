@@ -1,6 +1,6 @@
 package com.paxpos;
 
-import com.nbbse.printapi.*;
+//import com.nbbse.printapi.*;
 import org.apache.cordova.*;
 
 import java.io.*;
@@ -36,14 +36,14 @@ import android.content.*;
 import android.R;
 
 public class PaxPos extends CordovaPlugin {
-	public static Printer print;
+	// public static Printer print;
 	public Context context;
 	CordovaInterface mycordova;
 	CordovaWebView mywebView;
 
 	public void initialize(CordovaInterface cordova, CordovaWebView webView) {
 		super.initialize(cordova, webView);
-		print = Printer.getInstance();
+		p// rint = Printer.getInstance();
 		context = this.cordova.getActivity().getApplicationContext();
 		mycordova = cordova;
 		mywebView = webView;

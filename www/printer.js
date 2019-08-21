@@ -13,7 +13,7 @@ var printer = {
     return false;
   },
   printText: function (json, onSuccess, onError) {
-    exec(onSuccess, onError, "PaxPos", "printText", [json]);
+    exec(onSuccess, onError, "PaxPos", "printText", ["111"]);
   },
   printTest: function (json, onSuccess, onError) {
 

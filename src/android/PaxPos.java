@@ -43,7 +43,7 @@ public class PaxPos extends CordovaPlugin {
 
 	public void initialize(CordovaInterface cordova, CordovaWebView webView) {
 		super.initialize(cordova, webView);
-		p// rint = Printer.getInstance();
+		// print = Printer.getInstance();
 		context = this.cordova.getActivity().getApplicationContext();
 		mycordova = cordova;
 		mywebView = webView;
@@ -54,12 +54,12 @@ public class PaxPos extends CordovaPlugin {
 		if (action.equals("printTest")) {
 
 			String txt = args.getString(0);
-			String appid = args.getInt(1);
+			String appid = args.getString(1);
 
 			// InputStream is =
 			// context.getResources().openRawResource(getAppResource("logo", "raw"));
 
-			callbackContext.success(appid.toString() + "," + txt);
+			callbackContext.success(appid + "," + txt);
 			return true;
 		} else if (action.equals("printJson")) {
 

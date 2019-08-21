@@ -8,6 +8,9 @@ import com.pax.dal.exceptions.PrinterDevException;
 import com.pax.gl.page.IPage;
 import com.pax.gl.page.PaxGLPage;
 
+import com.pax.dal.IDAL;
+import com.pax.neptunelite.api.NeptuneLiteUser;
+
 import org.apache.cordova.*;
 
 import java.io.*;
@@ -43,18 +46,26 @@ import android.content.*;
 import android.R;
 
 public class PaxPos extends CordovaPlugin {
-	private IPrinter iPrinter;
-
 	public Context context;
 	CordovaInterface mycordova;
 	CordovaWebView mywebView;
 
+	private IPrinter iPrinter;
+	public PaxGLPage paxGLPage;
+	public static IDAL dal;
+	public static NeptuneLiteUser neptuneLiteUser;
+
 	public void initialize(CordovaInterface cordova, CordovaWebView webView) {
 		super.initialize(cordova, webView);
-		// print = Printer.getInstance();
 		context = this.cordova.getActivity().getApplicationContext();
 		mycordova = cordova;
 		mywebView = webView;
+
+		paxGLPage = PaxGLPage.getInstance(context);
+		neptuneLiteUser = NeptuneLiteUser.getInstance();
+		dal = neptuneLiteUser.getDal(context);
+		iPrinter = dal.getPrinter();
+
 	}
 
 	@Override
@@ -72,6 +83,9 @@ public class PaxPos extends CordovaPlugin {
 
 			callbackContext.success(appid + "," + txt);
 			callbackContext.success(parms);
+
+			iPrinter.printBitmap(generateGLPage("mahmod"));
+
 			return true;
 		} else if (action.equals("print_json")) {
 			callbackContext.success("1");
@@ -84,6 +98,18 @@ public class PaxPos extends CordovaPlugin {
 	private int getAppResource(String name, String type) {
 		return mycordova.getActivity().getResources().getIdentifier(name, type,
 				mycordova.getActivity().getPackageName());
+	}
+
+	private Bitmap generateGLPage(String data) {
+
+		IPage page = paxGLPage.createPage();
+
+		page.adjustLineSpace(-9);
+
+		page.addLine().addUnit(data, 36, IPage.EAlign.CENTER);
+
+		page.addLine().addUnit("\n\n\n", 36);
+		return paxGLPage.pageToBitmap(page, 384);
 	}
 
 }

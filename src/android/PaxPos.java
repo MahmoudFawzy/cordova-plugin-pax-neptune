@@ -53,8 +53,11 @@ public class PaxPos extends CordovaPlugin {
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 		if (action.equals("printTest")) {
 
-			String txt = args.getString(0);
-			String appid = args.getString(1);
+			String parms = args.getString(0);
+			JSONObject json = new JSONObject(parms);
+
+			int appid = json.getInt("app_id");
+			String txt = json.getInt("txt");
 
 			// InputStream is =
 			// context.getResources().openRawResource(getAppResource("logo", "raw"));

@@ -12,15 +12,15 @@ var printer = {
     }
     return false;
   },
-  printText: function (parms, onSuccess, onError) {
-    exec(onSuccess, onError, "PaxPos", "printText", parms);
+  printText: function (json, onSuccess, onError) {
+    exec(onSuccess, onError, "PaxPos", "printText", [json]);
   },
-  printTest: function (parms, onSuccess, onError) {
-    console.log(parms);
-    exec(onSuccess, onError, "PaxPos", "printTest", ["1", "2"]);
+  printTest: function (json, onSuccess, onError) {
+
+    exec(onSuccess, onError, "PaxPos", "printTest", [json]);
   },
-  printJson: function (parms, onSuccess, onError) {
-    exec(onSuccess, onError, "PaxPos", "printJson", parms);
+  printJson: function (json, onSuccess, onError) {
+    exec(onSuccess, onError, "PaxPos", "printJson", [json]);
   }
 };
 module.exports = printer;

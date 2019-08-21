@@ -13,13 +13,13 @@ var printer = {
     return false;
   },
   printTest: function (json, onSuccess, onError) {
-    exec(onSuccess, onError, "PaxPos", "print_test", [json]);
+    exec(onSuccess, onError, "PaxPos", "print_test", [JSON.stringify(json)]);
   },
-  printText: function (txt, onSuccess, onError) {
-    exec(onSuccess, onError, "PaxPos", "print_text", [txt]);
+  printText: function (json, onSuccess, onError) {
+    exec(onSuccess, onError, "PaxPos", "print_text", [JSON.stringify(json)]);
   },
   printJson: function (json, onSuccess, onError) {
-    exec(onSuccess, onError, "PaxPos", "print_json", [json]);
+    exec(onSuccess, onError, "PaxPos", "print_json", [JSON.stringify(json)]);
   }
 };
 module.exports = printer;

@@ -1,6 +1,13 @@
 package com.paxpos;
 
 //import com.nbbse.printapi.*;
+
+import com.pax.dal.IDAL;
+import com.pax.dal.IPrinter;
+import com.pax.dal.exceptions.PrinterDevException;
+import com.pax.gl.page.IPage;
+import com.pax.gl.page.PaxGLPage;
+
 import org.apache.cordova.*;
 
 import java.io.*;
@@ -36,7 +43,8 @@ import android.content.*;
 import android.R;
 
 public class PaxPos extends CordovaPlugin {
-	// public static Printer print;
+	private IPrinter iPrinter;
+
 	public Context context;
 	CordovaInterface mycordova;
 	CordovaWebView mywebView;

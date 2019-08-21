@@ -16,7 +16,8 @@ var printer = {
     exec(onSuccess, onError, "PaxPos", "printText", parms);
   },
   printTest: function (parms, onSuccess, onError) {
-    exec(onSuccess, onError, "PaxPos", "printTest", parms);
+    console.log(parms);
+    exec(onSuccess, onError, "PaxPos", "printTest", ["1", "2"]);
   },
   printJson: function (parms, onSuccess, onError) {
     exec(onSuccess, onError, "PaxPos", "printJson", parms);

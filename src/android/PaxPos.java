@@ -62,10 +62,12 @@ public class PaxPos extends CordovaPlugin {
 		mywebView = webView;
 
 		paxGLPage = PaxGLPage.getInstance(context);
-		neptuneLiteUser = NeptuneLiteUser.getInstance();
-		dal = neptuneLiteUser.getDal(context);
-		iPrinter = dal.getPrinter();
+		// neptuneLiteUser = NeptuneLiteUser.getInstance();
+		// dal = neptuneLiteUser.getDal(context);
+		// iPrinter = dal.getPrinter();
 
+		// iPrinter.init();
+		// int res = iPrinter.start();
 	}
 
 	@Override
@@ -84,7 +86,7 @@ public class PaxPos extends CordovaPlugin {
 			callbackContext.success(appid + "," + txt);
 			callbackContext.success(parms);
 
-			iPrinter.printBitmap(generateGLPage("mahmod"));
+			// iPrinter.printBitmap(generateGLPage("mahmod"));
 
 			return true;
 		} else if (action.equals("print_json")) {

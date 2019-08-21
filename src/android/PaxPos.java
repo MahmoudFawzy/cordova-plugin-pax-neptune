@@ -62,7 +62,7 @@ public class PaxPos extends CordovaPlugin {
 		mywebView = webView;
 
 		neptuneLiteUser = NeptuneLiteUser.getInstance();
-		dal = neptuneLiteUser.getDal();
+		dal = neptuneLiteUser.getDal(context);
 
 		paxGLPage = PaxGLPage.getInstance(context);
 		// iPrinter = dal.getPrinter();

@@ -1,4 +1,4 @@
-package com.m3printer;
+package com.paxpos;
 
 import com.nbbse.printapi.*;
 import org.apache.cordova.*;
@@ -35,7 +35,7 @@ import java.util.List;
 import android.content.*;
 import android.R;
 
-public class M3Printer extends CordovaPlugin {
+public class PaxPos extends CordovaPlugin {
 	public static Printer print;
 	public Context context;
 	CordovaInterface mycordova;
@@ -86,7 +86,6 @@ public class M3Printer extends CordovaPlugin {
 
 			}
 			print.printText(String.valueOf(prepLabel("تكلفة الخدمة") + json.getString("Totalprice")), 1, true);
-					
 
 			if (showFees) {
 				print.printText(String.valueOf(prepLabel("رسوم التحصيل") + json.getString("Fees")), 1, true);
@@ -116,8 +115,7 @@ public class M3Printer extends CordovaPlugin {
 			SimpleDateFormat dateFormat_date = new SimpleDateFormat("dd-MM-yyyy hh:mm aa", Locale.ENGLISH);
 			SimpleDateFormat dateFormat_time = new SimpleDateFormat("hh:mm aa", Locale.ENGLISH);
 
-			print.printText(
-					String.valueOf(prepLabel("تاريخ التحصيل") + dateFormat_date.format(convertedDate)), 1,
+			print.printText(String.valueOf(prepLabel("تاريخ التحصيل") + dateFormat_date.format(convertedDate)), 1,
 					true);
 
 			// print.printText(String.valueOf(prepLabel("وقت التحصيل") + dateForma
@@ -132,7 +130,6 @@ public class M3Printer extends CordovaPlugin {
 
 			print.printText(String.valueOf(prepLabel("رقم الفرع") + json.getString("AgentCode")), 1, true);
 			print.printText(String.valueOf(prepLabel("رقم الفاتورة") + json.getString("InvoiceId")), 1, true);
-					
 
 			double s = json.getDouble("Status");
 			String s_str = "غير محدد";
@@ -160,13 +157,13 @@ public class M3Printer extends CordovaPlugin {
 			String AppId = args.getString(1);
 			String Logo = "logo";
 			// if(AppId == "30"){
-			// 	Logo = "logo30";
+			// Logo = "logo30";
 
 			// }
 
 			InputStream is = context.getResources().openRawResource(getAppResource(Logo, "raw"));
 			print.printBitmap(is);
- 
+
 			JSONObject json = new JSONObject(txt);
 			JSONArray jReciept = json.getJSONArray("Fields");
 
@@ -179,15 +176,15 @@ public class M3Printer extends CordovaPlugin {
 				if (Arrays.asList("1100,1094,1106,691,1364,1724".split(",")).indexOf(jO.getString("SFId")) > -1) {
 					print.printText(prepLabel(jO.getString("FieldName")), 2, true);
 					print.printText(jO.getString("Value"), 2, false);
- 
+
 				} else {
 					print.printText(String.valueOf(prepLabel(jO.getString("FieldName")) + jO.getString("Value")), 1,
 							true);
-				}  
+				}
 			}
 			print.printText(String.valueOf(prepLabel("تكلفة الخدمة") + json.getString("Totalprice")), 1, true);
-					 
-			if ( json.getDouble("Fees") > 0) {
+
+			if (json.getDouble("Fees") > 0) {
 				print.printText(String.valueOf(prepLabel("رسوم التحصيل") + json.getString("Fees")), 1, true);
 			}
 
@@ -215,8 +212,7 @@ public class M3Printer extends CordovaPlugin {
 			SimpleDateFormat dateFormat_date = new SimpleDateFormat("dd-MM-yyyy hh:mm aa", Locale.ENGLISH);
 			SimpleDateFormat dateFormat_time = new SimpleDateFormat("hh:mm aa", Locale.ENGLISH);
 
-			print.printText(
-					String.valueOf(prepLabel("تاريخ التحصيل") + dateFormat_date.format(convertedDate)), 1,
+			print.printText(String.valueOf(prepLabel("تاريخ التحصيل") + dateFormat_date.format(convertedDate)), 1,
 					true);
 
 			// print.printText(String.valueOf(prepLabel("وقت التحصيل") + dateForma
@@ -231,7 +227,6 @@ public class M3Printer extends CordovaPlugin {
 
 			print.printText(String.valueOf(prepLabel("رقم الفرع") + json.getString("AgentCode")), 1, true);
 			print.printText(String.valueOf(prepLabel("رقم الفاتورة") + json.getString("InvoiceId")), 1, true);
-					
 
 			double s = json.getDouble("Status");
 			String s_str = "غير محدد";
@@ -258,12 +253,11 @@ public class M3Printer extends CordovaPlugin {
 			String AppId = args.getString(1);
 			String Logo = "logo";
 			// if(AppId == "30"){
-			// 	Logo = "logo30"; 
+			// Logo = "logo30";
 			// }
 
 			InputStream is = context.getResources().openRawResource(getAppResource(Logo, "raw"));
 			print.printBitmap(is);
-
 
 			JSONObject json = new JSONObject(txt);
 			JSONArray jReciept = json.getJSONArray("data");

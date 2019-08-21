@@ -3,7 +3,7 @@ var exec = require("cordova/exec");
 var printer = {
   platforms: ["android"],
 
-  isSupported: function() {
+  isSupported: function () {
     if (window.device) {
       var platform = window.device.platform;
       if (platform !== undefined && platform !== null) {
@@ -12,20 +12,14 @@ var printer = {
     }
     return false;
   },
-  printText: function(text, onSuccess, onError, AppId) {
-    exec(onSuccess, onError, "M3Printer", "printText", [text, AppId]);
+  printText: function (parms, onSuccess, onError) {
+    exec(onSuccess, onError, "PaxPos", "printText", parms);
   },
-  printTest: function(text, onSuccess, onError, AppId) {
-    exec(onSuccess, onError, "M3Printer", "printTest", [text, AppId]);
+  printTest: function (parms, onSuccess, onError) {
+    exec(onSuccess, onError, "PaxPos", "printTest", parms);
   },
-  printJson: function(text, onSuccess, onError, AppId) {
-    exec(onSuccess, onError, "M3Printer", "printJson", [text, AppId]);
-  },
-  printBase64: function(base64, onSuccess, onError) {
-    exec(onSuccess, onError, "M3Printer", "printBase64", [base64]);
-  },
-  printPath: function(base64, onSuccess, onError) {
-    exec(onSuccess, onError, "M3Printer", "printPath", [base64]);
+  printJson: function (parms, onSuccess, onError) {
+    exec(onSuccess, onError, "PaxPos", "printJson", parms);
   }
 };
 module.exports = printer;

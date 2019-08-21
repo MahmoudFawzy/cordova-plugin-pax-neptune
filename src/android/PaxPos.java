@@ -51,7 +51,7 @@ public class PaxPos extends CordovaPlugin {
 
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-		if (action.equals("printTest")) {
+		if (action.equals("print_test")) {
 
 			// String parms = args.getString(0);
 			// JSONObject json = new JSONObject(parms);
@@ -65,8 +65,7 @@ public class PaxPos extends CordovaPlugin {
 			// callbackContext.success(appid + "," + txt);
 			callbackContext.success("1");
 			return true;
-		} else if (action.equals("printJson")) {
-
+		} else if (action.equals("print_json")) {
 			callbackContext.success("1");
 			return true;
 		} else {

@@ -92,9 +92,12 @@ public class PaxPos extends CordovaPlugin {
 
 			// callbackContext.success(appid + "," + txt);
 			// callbackContext.success(parms);
-
-			iPrinter.printBitmap(generateGLPage("mahmod"));
-
+			try {
+				iPrinter.printBitmap(generateGLPage("mahmod"));
+			} catch (Exception e) {
+				// TODO: handle exception
+				callbackContext.success(" exception");
+			}
 			callbackContext.success("1");
 			return true;
 		} else if (action.equals("print_json")) {

@@ -60,9 +60,9 @@ public class PaxPos extends CordovaPlugin {
 		context = this.cordova.getActivity().getApplicationContext();
 		mycordova = cordova;
 		mywebView = webView;
-	 
+
 		try {
-				
+
 			neptuneLiteUser = NeptuneLiteUser.getInstance();
 
 			dal = neptuneLiteUser.getDal(context); // not working
@@ -73,7 +73,7 @@ public class PaxPos extends CordovaPlugin {
 			iPrinter.init();
 			int res = iPrinter.start();
 		} catch (Exception e) {
-			//TODO: handle exception
+			// TODO: handle exception
 		}
 	}
 
@@ -81,20 +81,21 @@ public class PaxPos extends CordovaPlugin {
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 		if (action.equals("print_test")) {
 
-			String parms = args.getString(0);
-			JSONObject json = new JSONObject(parms);
+			// String parms = args.getString(0);
+			// JSONObject json = new JSONObject(parms);
 
-			int appid = json.getInt("app_id");
-			String txt = json.getString("txt");
+			// int appid = json.getInt("app_id");
+			// String txt = json.getString("txt");
 
 			// InputStream is =
 			// context.getResources().openRawResource(getAppResource("logo", "raw"));
 
-			callbackContext.success(appid + "," + txt);
-			callbackContext.success(parms);
+			// callbackContext.success(appid + "," + txt);
+			// callbackContext.success(parms);
 
-			// iPrinter.printBitmap(generateGLPage("mahmod"));
+			iPrinter.printBitmap(generateGLPage("mahmod"));
 
+			callbackContext.success("1");
 			return true;
 		} else if (action.equals("print_json")) {
 			callbackContext.success("1");

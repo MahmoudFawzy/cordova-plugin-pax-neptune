@@ -142,13 +142,13 @@ public class PaxPos extends CordovaPlugin {
 					SystemClock.sleep(100);
 					continue;
 				} else if (ret == 2) {
-					onShowMessage("Printer is Out of Paper");
+					// onShowMessage("Printer is Out of Paper");
 					return -1;
 				} else if (ret == 8) {
-					onShowMessage("Printer is too hot");
+					// onShowMessage("Printer is too hot");
 					return -1;
 				} else if (ret == 9) {
-					onShowMessage("Voltage is too low!");
+					// onShowMessage("Voltage is too low!");
 					return -1;
 				} else if (ret != 0) {
 					return -1;

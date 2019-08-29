@@ -93,7 +93,7 @@ public class PaxPos extends CordovaPlugin {
 
 				dal = neptuneLiteUser.getDal(context);
 
-				// paxGLPage = PaxGLPage.getInstance(context);
+				paxGLPage = PaxGLPage.getInstance(context);
 				printer = dal.getPrinter();
 
 				print_img();
@@ -192,7 +192,7 @@ public class PaxPos extends CordovaPlugin {
 		try {
 			showToast("init_start");
 			// printer.init();
-			printer.setGray(255);
+			// printer.setGray(255);
 		} catch (PrinterDevException e) {
 			callback = "init error";
 			showToast("init error");

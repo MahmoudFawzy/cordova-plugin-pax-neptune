@@ -94,7 +94,7 @@ public class PaxPos extends CordovaPlugin {
 				// paxGLPage = PaxGLPage.getInstance(context);
 				printer = dal.getPrinter();
 
-				// print_img();
+				print_img();
 				// callback = "getStatus:" + printer.getStatus();
 
 				// printer.init();
@@ -106,7 +106,9 @@ public class PaxPos extends CordovaPlugin {
 				// callbackContext.success(String.valueOf(res));
 				// return true;
 			} catch (Exception e) {
-				callbackContext.success(" exception :" + e.getMessage());
+				callbackContext.success(" exception :");
+
+				// + e.getMessage()
 				return true;
 			}
 			callbackContext.success(callback);

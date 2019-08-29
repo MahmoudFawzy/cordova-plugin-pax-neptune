@@ -7,8 +7,6 @@ import com.pax.dal.IPrinter;
 import com.pax.dal.exceptions.PrinterDevException;
 import com.pax.gl.page.IPage;
 import com.pax.gl.page.PaxGLPage;
-
-import com.pax.dal.IDAL;
 import com.pax.neptunelite.api.NeptuneLiteUser;
 
 import org.apache.cordova.*;

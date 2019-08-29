@@ -192,7 +192,7 @@ public class PaxPos extends CordovaPlugin {
 		try {
 			showToast("init_start");
 			// printer.init();
-			// printer.setGray(255);
+			printer.setGray(255);
 		} catch (PrinterDevException e) {
 			callback = "init error";
 			showToast("init error");

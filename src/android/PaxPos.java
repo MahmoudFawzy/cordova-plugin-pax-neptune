@@ -85,7 +85,7 @@ public class PaxPos extends CordovaPlugin {
 
 				neptuneLiteUser = NeptuneLiteUser.getInstance();
 
-				// dal = neptuneLiteUser.getDal(context); // not working
+				dal = neptuneLiteUser.getDal(context);
 
 				// paxGLPage = PaxGLPage.getInstance(context); // working working
 				// iPrinter = dal.getPrinter();
@@ -101,7 +101,7 @@ public class PaxPos extends CordovaPlugin {
 				callbackContext.success(" exception :" + e.getMessage());
 				return true;
 			}
-			callbackContext.success("123");
+			callbackContext.success("1234");
 			return true;
 		} else if (action.equals("print_json")) {
 			callbackContext.success("1");

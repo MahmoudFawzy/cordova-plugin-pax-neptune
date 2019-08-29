@@ -53,6 +53,7 @@ public class PaxPos extends CordovaPlugin {
 
 	private IPrinter printer;
 	public PaxGLPage paxGLPage;
+	public String callback;
 	public static IDAL dal;
 	public static NeptuneLiteUser neptuneLiteUser;
 
@@ -61,6 +62,8 @@ public class PaxPos extends CordovaPlugin {
 		context = this.cordova.getActivity().getApplicationContext();
 		mycordova = cordova;
 		mywebView = webView;
+
+		callback = "123456";
 
 	}
 
@@ -82,7 +85,6 @@ public class PaxPos extends CordovaPlugin {
 
 			/// printing
 
-			String callback = "123456";
 			try {
 
 				neptuneLiteUser = NeptuneLiteUser.getInstance();
@@ -185,11 +187,9 @@ public class PaxPos extends CordovaPlugin {
 	public void init() {
 		try {
 			printer.init();
-
 			printer.setGray(255);
 		} catch (PrinterDevException e) {
-			e.printStackTrace();
-			Log.d("init", e.toString());
+			callback = "init" + e.toString();
 		}
 	}
 

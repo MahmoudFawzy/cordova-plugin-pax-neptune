@@ -81,7 +81,7 @@ public class PaxPos extends CordovaPlugin {
 
 			/// printing
 
-			callbackContext.success("1");
+			callbackContext.success("12");
 			return true;
 			try {
 				neptuneLiteUser = NeptuneLiteUser.getInstance();

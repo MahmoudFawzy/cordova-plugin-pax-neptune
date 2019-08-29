@@ -63,7 +63,7 @@ public class PaxPos extends CordovaPlugin {
 		mycordova = cordova;
 		mywebView = webView;
 
-		callback = "123456";
+		callback = "71";
 
 	}
 

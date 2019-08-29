@@ -81,11 +81,13 @@ public class PaxPos extends CordovaPlugin {
 
 			/// printing
 
+			neptuneLiteUser = NeptuneLiteUser.getInstance();
+
 			callbackContext.success("12");
 			return true;
 
 			// try {
-			// neptuneLiteUser = NeptuneLiteUser.getInstance();
+			//
 
 			// dal = neptuneLiteUser.getDal(context); // not working
 

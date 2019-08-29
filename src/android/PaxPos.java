@@ -28,6 +28,8 @@ import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
 
+import android.widget.Toast;
+
 import android.os.SystemClock;
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -188,14 +190,17 @@ public class PaxPos extends CordovaPlugin {
 
 	public void init() {
 		try {
+			showToast("init_start");
 			printer.init();
 			// printer.setGray(255);
 		} catch (PrinterDevException e) {
 			callback = "init error";
+			showToast("init error");
 		}
 	}
 
 	protected void printBitmap(Bitmap bitmap) {
+
 		init();
 		// try {
 		// printer.printBitmap(bitmap);
@@ -210,13 +215,21 @@ public class PaxPos extends CordovaPlugin {
 	 * Print image
 	 */
 	private void print_img() {
-
+		showToast("print_img");
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
 				printBitmap(generate());
 			}
 		}).start();
+	}
+
+	public void showToast(String toLog) {
+		Context context = cordova.getActivity();
+		int duration = Toast.LENGTH_SHORT;
+
+		Toast toast = Toast.makeText(context, toLog, duration);
+		toast.show();
 	}
 
 }

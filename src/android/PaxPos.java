@@ -170,7 +170,7 @@ public class PaxPos extends CordovaPlugin {
 	}
 
 	private Bitmap generate() {
-
+		showToast("generate");
 		IPage page = paxGLPage.createPage();
 
 		page.adjustLineSpace(-9);
@@ -201,7 +201,7 @@ public class PaxPos extends CordovaPlugin {
 
 	protected void printBitmap(Bitmap bitmap) {
 
-		init();
+		// init();
 		// try {
 		// printer.printBitmap(bitmap);
 		// } catch (PrinterDevException e) {
@@ -215,7 +215,7 @@ public class PaxPos extends CordovaPlugin {
 	 * Print image
 	 */
 	private void print_img() {
-		showToast("print_img");
+
 		new Thread(new Runnable() {
 			@Override
 			public void run() {

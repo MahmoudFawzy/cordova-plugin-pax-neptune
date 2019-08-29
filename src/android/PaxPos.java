@@ -81,31 +81,28 @@ public class PaxPos extends CordovaPlugin {
 
 			/// printing
 
-			neptuneLiteUser = NeptuneLiteUser.getInstance();
+			try {
 
-			callbackContext.success("12");
+				neptuneLiteUser = NeptuneLiteUser.getInstance();
+
+				// dal = neptuneLiteUser.getDal(context); // not working
+
+				// paxGLPage = PaxGLPage.getInstance(context); // working working
+				// iPrinter = dal.getPrinter();
+
+				// iPrinter.init();
+				// iPrinter.printBitmap(generateGLPage("mahmod"));
+
+				// int res = iPrinter.start();
+				// callbackContext.success(String.valueOf(res));
+				// return true;
+			} catch (Exception e) {
+				// // TODO: handle exception
+				callbackContext.success(" exception :" + e.getMessage());
+				return true;
+			}
+			callbackContext.success("123");
 			return true;
-
-			// try {
-			//
-
-			// dal = neptuneLiteUser.getDal(context); // not working
-
-			// paxGLPage = PaxGLPage.getInstance(context); // working working
-			// iPrinter = dal.getPrinter();
-
-			// iPrinter.init();
-			// iPrinter.printBitmap(generateGLPage("mahmod"));
-
-			// int res = iPrinter.start();
-			// callbackContext.success(String.valueOf(res));
-			// return true;
-			// } catch (Exception e) {
-			// // TODO: handle exception
-			// callbackContext.success(" exception");
-			// }
-			// callbackContext.success("1");
-			// return true;
 		} else if (action.equals("print_json")) {
 			callbackContext.success("1");
 			return true;

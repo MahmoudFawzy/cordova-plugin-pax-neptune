@@ -216,6 +216,19 @@ public class PaxPos extends CordovaPlugin {
 		// start(printer);
 	}
 
+	protected void printBitmap() {
+
+		showToast("printBitmap");
+		init();
+		// try {
+		// printer.printBitmap(bitmap);
+		// } catch (PrinterDevException e) {
+		// e.printStackTrace();
+		// Log.d("printBitmap", e.toString());
+		// }
+		// start(printer);
+	}
+
 	/**
 	 * Print image
 	 */
@@ -224,7 +237,8 @@ public class PaxPos extends CordovaPlugin {
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
-				printBitmap(generate());
+				// printBitmap(generate());
+				printBitmap();
 			}
 		}).start();
 	}

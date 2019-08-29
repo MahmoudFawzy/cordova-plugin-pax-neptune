@@ -79,9 +79,6 @@ public class PaxPos extends CordovaPlugin {
 			// int appid = json.getInt("app_id");
 			// String txt = json.getString("txt");
 
-			// InputStream is =
-			// context.getResources().openRawResource(getAppResource("logo", "raw"));
-
 			// callbackContext.success(appid + "," + txt);
 			// callbackContext.success(parms);
 
@@ -93,7 +90,7 @@ public class PaxPos extends CordovaPlugin {
 
 				dal = neptuneLiteUser.getDal(context);
 
-				paxGLPage = PaxGLPage.getInstance(context);
+				// paxGLPage = PaxGLPage.getInstance(context);
 				printer = dal.getPrinter();
 
 				print_img();
@@ -171,21 +168,29 @@ public class PaxPos extends CordovaPlugin {
 
 	private Bitmap generate() {
 		showToast("generate");
-		IPage page = paxGLPage.createPage();
 
-		page.adjustLineSpace(-9);
+		InputStream is = context.getResources().openRawResource(getAppResource("logo", "raw"));
 
-		// To set the font file
-		// page.setTypeFace("/data/resource/font/DroidSansFallback.ttf");
+		Bitmap bitmap = BitmapFactory.decodeStream(is);
 
-		page.addLine().addUnit("11111", 36, IPage.EAlign.CENTER);
-		/*
-		 * page.addLine().addUnit("Print test string", 36, IPage.EAlign.CENTER);
-		 * page.addLine().addUnit("Print test string", 36, IPage.EAlign.CENTER);
-		 */
-		page.addLine().addUnit("\n\n\n", 36);
+		return bitmap;
+
+		// IPage page = paxGLPage.createPage();
+
+		// page.adjustLineSpace(-9);
+
+		// // To set the font file
+		// // page.setTypeFace("/data/resource/font/DroidSansFallback.ttf");
+
+		// page.addLine().addUnit("11111", 36, IPage.EAlign.CENTER);
+		// /*
+		// * page.addLine().addUnit("Print test string", 36, IPage.EAlign.CENTER);
+		// * page.addLine().addUnit("Print test string", 36, IPage.EAlign.CENTER);
+		// */
+		// page.addLine().addUnit("\n\n\n", 36);
+		// //
 		// page.addLine().addUnit(page.createUnit().setBitmap(getResources().getAssets().));
-		return paxGLPage.pageToBitmap(page, 384);
+		// return paxGLPage.pageToBitmap(page, 384);
 	}
 
 	public void init() {

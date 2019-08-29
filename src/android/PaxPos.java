@@ -3,7 +3,7 @@ package com.paxpos;
 //import com.nbbse.printapi.*;
 
 import com.pax.dal.IDAL;
-import com.pax.dal.printer;
+import com.pax.dal.IPrinter;
 import com.pax.dal.exceptions.PrinterDevException;
 import com.pax.gl.page.IPage;
 import com.pax.gl.page.PaxGLPage;
@@ -50,7 +50,7 @@ public class PaxPos extends CordovaPlugin {
 	CordovaInterface mycordova;
 	CordovaWebView mywebView;
 
-	private printer printer;
+	private IPrinter printer;
 	public PaxGLPage paxGLPage;
 	public static IDAL dal;
 	public static NeptuneLiteUser neptuneLiteUser;
@@ -92,7 +92,6 @@ public class PaxPos extends CordovaPlugin {
 				printer = dal.getPrinter();
 
 				print_img();
-
 				// callback = "getStatus:" + printer.getStatus();
 
 				// printer.init();
@@ -134,7 +133,7 @@ public class PaxPos extends CordovaPlugin {
 		return paxGLPage.pageToBitmap(page, 384);
 	}
 
-	private int start(printer printer) {
+	private int start(IPrinter printer) {
 		try {
 			while (true) {
 				int ret = printer.start();
@@ -172,7 +171,7 @@ public class PaxPos extends CordovaPlugin {
 		// To set the font file
 		// page.setTypeFace("/data/resource/font/DroidSansFallback.ttf");
 
-		page.addLine().addUnit("mahmud1111111", 36, IPage.EAlign.CENTER);
+		page.addLine().addUnit("11111", 36, IPage.EAlign.CENTER);
 		/*
 		 * page.addLine().addUnit("Print test string", 36, IPage.EAlign.CENTER);
 		 * page.addLine().addUnit("Print test string", 36, IPage.EAlign.CENTER);

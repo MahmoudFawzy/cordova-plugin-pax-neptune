@@ -91,7 +91,7 @@ public class PaxPos extends CordovaPlugin {
 				paxGLPage = PaxGLPage.getInstance(context);
 				iPrinter = dal.getPrinter();
 
-				callback = iPrinter.getStatus();
+				callback = "getStatus:" + iPrinter.getStatus();
 
 				// iPrinter.init();
 

@@ -13,6 +13,8 @@ import com.pax.neptunelite.api.NeptuneLiteUser;
 
 import org.apache.cordova.*;
 
+import android.support.v7.app.AppCompatActivity;
+
 import java.io.*;
 import java.util.*;
 import java.text.*;

@@ -3,7 +3,7 @@ package com.paxpos;
 //import com.nbbse.printapi.*;
 
 import com.pax.dal.IDAL;
-import com.pax.dal.IPrinter;
+import com.pax.dal.printer;
 import com.pax.dal.exceptions.PrinterDevException;
 import com.pax.gl.page.IPage;
 import com.pax.gl.page.PaxGLPage;
@@ -50,7 +50,7 @@ public class PaxPos extends CordovaPlugin {
 	CordovaInterface mycordova;
 	CordovaWebView mywebView;
 
-	private IPrinter iPrinter;
+	private printer printer;
 	public PaxGLPage paxGLPage;
 	public static IDAL dal;
 	public static NeptuneLiteUser neptuneLiteUser;
@@ -88,17 +88,19 @@ public class PaxPos extends CordovaPlugin {
 
 				dal = neptuneLiteUser.getDal(context);
 
-				paxGLPage = PaxGLPage.getInstance(context);
-				iPrinter = dal.getPrinter();
+				// paxGLPage = PaxGLPage.getInstance(context);
+				printer = dal.getPrinter();
 
-				callback = "getStatus:" + iPrinter.getStatus();
+				print_img();
 
-				// iPrinter.init();
+				// callback = "getStatus:" + printer.getStatus();
 
-				// iPrinter.setGray(255);
-				// iPrinter.printBitmap(generateGLPage("mahmod"));
+				// printer.init();
 
-				// int res = iPrinter.start();
+				// printer.setGray(255);
+				// printer.printBitmap(generateGLPage("mahmod"));
+
+				// int res = printer.start();
 				// callbackContext.success(String.valueOf(res));
 				// return true;
 			} catch (Exception e) {
@@ -130,6 +132,89 @@ public class PaxPos extends CordovaPlugin {
 
 		page.addLine().addUnit("\n\n\n", 36);
 		return paxGLPage.pageToBitmap(page, 384);
+	}
+
+	private int start(printer printer) {
+		try {
+			while (true) {
+				int ret = printer.start();
+				// printer is busy, please wait
+				if (ret == 1) {
+					SystemClock.sleep(100);
+					continue;
+				} else if (ret == 2) {
+					onShowMessage("Printer is Out of Paper");
+					return -1;
+				} else if (ret == 8) {
+					onShowMessage("Printer is too hot");
+					return -1;
+				} else if (ret == 9) {
+					onShowMessage("Voltage is too low!");
+					return -1;
+				} else if (ret != 0) {
+					return -1;
+				}
+
+				return 0;
+			}
+		} catch (PrinterDevException e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+	private Bitmap generate() {
+
+		IPage page = paxGLPage.createPage();
+
+		page.adjustLineSpace(-9);
+
+		// To set the font file
+		// page.setTypeFace("/data/resource/font/DroidSansFallback.ttf");
+
+		page.addLine().addUnit("mahmud1111111", 36, IPage.EAlign.CENTER);
+		/*
+		 * page.addLine().addUnit("Print test string", 36, IPage.EAlign.CENTER);
+		 * page.addLine().addUnit("Print test string", 36, IPage.EAlign.CENTER);
+		 */
+		page.addLine().addUnit("\n\n\n", 36);
+		// page.addLine().addUnit(page.createUnit().setBitmap(getResources().getAssets().));
+		return paxGLPage.pageToBitmap(page, 384);
+	}
+
+	public void init() {
+		try {
+			printer.init();
+
+			printer.setGray(255);
+		} catch (PrinterDevException e) {
+			e.printStackTrace();
+			Log.d("init", e.toString());
+		}
+	}
+
+	protected void printBitmap(Bitmap bitmap) {
+		init();
+		try {
+			printer.printBitmap(bitmap);
+		} catch (PrinterDevException e) {
+			e.printStackTrace();
+			Log.d("printBitmap", e.toString());
+		}
+		start(printer);
+	}
+
+	/**
+	 * Print image
+	 */
+	private void print_img() {
+
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				printBitmap(generate());
+			}
+		}).start();
 	}
 
 }

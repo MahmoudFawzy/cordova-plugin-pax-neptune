@@ -7,11 +7,11 @@ import com.pax.dal.IPrinter;
 import com.pax.dal.exceptions.PrinterDevException;
 import com.pax.gl.page.IPage;
 import com.pax.gl.page.PaxGLPage;
+
+import com.pax.dal.IDAL;
 import com.pax.neptunelite.api.NeptuneLiteUser;
 
 import org.apache.cordova.*;
-
-import android.support.v7.app.AppCompatActivity;
 
 import java.io.*;
 import java.util.*;
@@ -189,7 +189,7 @@ public class PaxPos extends CordovaPlugin {
 	public void init() {
 		try {
 			printer.init();
-			printer.setGray(255);
+			// printer.setGray(255);
 		} catch (PrinterDevException e) {
 			callback = "init error";
 		}

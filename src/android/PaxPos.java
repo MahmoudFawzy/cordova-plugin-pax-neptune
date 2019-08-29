@@ -139,7 +139,7 @@ public class PaxPos extends CordovaPlugin {
 				int ret = printer.start();
 				// printer is busy, please wait
 				if (ret == 1) {
-					SystemClock.sleep(100);
+					// SystemClock.sleep(100);
 					continue;
 				} else if (ret == 2) {
 					// onShowMessage("Printer is Out of Paper");

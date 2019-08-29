@@ -28,6 +28,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
 
+import android.os.SystemClock;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -211,7 +212,7 @@ public class PaxPos extends CordovaPlugin {
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
-				printBitmap(generate());
+				// printBitmap(generate());
 			}
 		}).start();
 	}

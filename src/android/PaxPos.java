@@ -61,18 +61,6 @@ public class PaxPos extends CordovaPlugin {
 		mycordova = cordova;
 		mywebView = webView;
 
-		try {
-			// definiation
-			neptuneLiteUser = NeptuneLiteUser.getInstance();
-
-			dal = neptuneLiteUser.getDal(context); // not working
-
-			paxGLPage = PaxGLPage.getInstance(context); // working working
-			iPrinter = dal.getPrinter();
-
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
 	}
 
 	@Override
@@ -94,6 +82,13 @@ public class PaxPos extends CordovaPlugin {
 			/// printing
 
 			try {
+				neptuneLiteUser = NeptuneLiteUser.getInstance();
+
+				dal = neptuneLiteUser.getDal(context); // not working
+
+				paxGLPage = PaxGLPage.getInstance(context); // working working
+				iPrinter = dal.getPrinter();
+
 				iPrinter.init();
 				iPrinter.printBitmap(generateGLPage("mahmod"));
 

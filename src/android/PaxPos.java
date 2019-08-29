@@ -206,7 +206,7 @@ public class PaxPos extends CordovaPlugin {
 
 	protected void printBitmap(Bitmap bitmap) {
 
-		// init();
+		init();
 		// try {
 		// printer.printBitmap(bitmap);
 		// } catch (PrinterDevException e) {
